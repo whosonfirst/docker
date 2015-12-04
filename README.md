@@ -1,7 +1,7 @@
 ## Getting started
 * install docker as per your local environment requirements
 * `WOF_DATA=/path/to/wof/data docker-compose build`
-* `docker-compose up`
+* `WOF_DATA=/path/to/wof/data docker-compose up`
 
 ## Environment
 * locally, you'll be able to reach the following endpoints
