@@ -1,6 +1,5 @@
 postgis:
   image: kartoza/postgis:9.4-2.1
-  container_name: postgis
   ports:
     - "5432:5432"
   environment:
@@ -9,7 +8,6 @@ postgis:
 
 elasticsearch:
   image: elasticsearch:1.7.3
-  container_name: es
   ports:
     - "9200:9200"
   environment:
@@ -17,7 +15,6 @@ elasticsearch:
 
 proxy:
   build: ./proxy
-  container_name: proxy
   links:
     - spelunker
   ports:
@@ -27,7 +24,6 @@ proxy:
 
 spelunker:
   build: ./spelunker
-  container_name: spelunker
   volumes:
     - ${WOF_DATA}:/wof/wof-data:ro
   links:
