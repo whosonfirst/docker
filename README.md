@@ -13,7 +13,8 @@
   * note that on OSX you'll need to substitute localhost with whatever IP is assigned to your local docker/virtualbox host (see ${DOCKER_HOST})
 
 ## Load Data
-* connect to the spelunker instance where the WOF data is mounted: `docker exec -i -t spelunker bash`
+* connect to the spelunker instance where the WOF data is mounted: `docker exec -i -t ${spelunker_id} bash`
+  * use `docker ps` to get the id of the spelunker container
 * load ES data in bulk: `wof-es-index -s /wof/wof-data/data -b --host=elasticsearch`
 * load individual files to ES: `wof-es-index-file --host=elasticsearch /path/to/file.geojson`
 * load postgis data: `wof-spatial-index -s /wof/wof-data/data -c /wof/wof.cfg`
