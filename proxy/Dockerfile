@@ -4,7 +4,7 @@ ENV ENVIRONMENT     ${ENVIRONMENT:-development}
 ENV REVISION        ${REVISION:-master}
 ENV SPELUNKER_REPO  https://github.com/whosonfirst/whosonfirst-www-spelunker.git
 
-RUN     mkdir /wof
+RUN mkdir /wof
 WORKDIR /wof
 
 RUN   apt-get update && apt-get install git -y

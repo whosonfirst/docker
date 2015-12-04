@@ -2,13 +2,13 @@ FROM python:2.7.10
 
 ENV BASEDIR           /wof
 ENV ENVIRONMENT       ${ENVIRONMENT:-development}
-ENV GUNICORN_PORT     8000
-ENV GUNICORN_VERSION  19.4.1
-ENV GEVENT_VERSION    1.0.2
-ENV FLASK_VERSION     0.10.1
+ENV GUNICORN_PORT     ${GUNICORN_PORT:-8000}
+ENV GUNICORN_VERSION  ${GUNICORN_VERSION:-19.4.1}
+ENV GEVENT_VERSION    ${GEVENT_VERSION:-1.0.2}
+ENV FLASK_VERSION     ${FLASK_VERSION:-0.10.1}
 ENV WOF_SPATIAL_DSN   dbname=${POSTGRES_DB} user=${POSTGRES_USER} password=${POSTGRES_PASSWORD} host=${POSTGRES_HOST} # this isn't working... ?
 
-ENV REVISION        master
+ENV REVISION        ${REVISION:-master}
 ENV SPELUNKER_REPO  https://github.com/whosonfirst/whosonfirst-www-spelunker.git
 ENV PLACETYPES_REPO https://github.com/whosonfirst/py-mapzen-whosonfirst-placetypes.git
 ENV SPATIAL_REPO    https://github.com/whosonfirst/py-mapzen-whosonfirst-spatial.git
