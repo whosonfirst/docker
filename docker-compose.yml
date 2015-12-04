@@ -1,0 +1,46 @@
+postgis:
+  image: kartoza/postgis:9.4-2.1
+  container_name: postgis
+  ports:
+    - "5432:5432"
+  environment:
+    - POSTGRES_USER=docker
+    - POSTGRES_PASS=docker
+
+elasticsearch:
+  image: elasticsearch:1.7.3
+  container_name: elasticsearch
+  ports:
+    - "9200:9200"
+  environment:
+    - ES_HEAP_SIZE=2g
+
+proxy:
+  build: ./proxy
+  container_name: proxy
+  links:
+    - spelunker
+  ports:
+    - "80:80"
+  environment:
+    - ENVIRONMENT=development
+
+spelunker:
+  build: ./spelunker
+  container_name: spelunker
+  volumes:
+    - ${WOF_DATA}:/wof/wof-data:ro
+  links:
+    - postgis
+    - elasticsearch
+  ports:
+    - "8000:8000"
+  environment:
+    - ENVIRONMENT=development
+    - POSTGRES_USER=docker
+    - POSTGRES_PASSWORD=docker
+    - POSTGRES_DB=wof
+    - POSTGRES_HOST=postgis
+    - WOF_SPATIAL_DSN=dbname=wof user=docker password=docker host=postgis
+    - WOF_SEARCH_HOST=elasticsearch
+    - WOF_SEARCH_PORT=9200
