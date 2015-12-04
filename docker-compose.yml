@@ -9,7 +9,7 @@ postgis:
 
 elasticsearch:
   image: elasticsearch:1.7.3
-  container_name: elasticsearch
+  container_name: es
   ports:
     - "9200:9200"
   environment:
