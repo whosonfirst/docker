@@ -8,6 +8,7 @@
   * postgis:5432
   * elasticsearch:9200
   * spelunker:80/spelunker
+  * iamhere:8001
 * for example, from your local machine:
   * `curl localhost:9200/whosonfirst/_count?pretty` (assuming you've loaded some documents)
   * note that on OSX you'll need to substitute localhost with whatever IP is assigned to your local docker/virtualbox host (see ${DOCKER_HOST})

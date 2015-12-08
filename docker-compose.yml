@@ -22,6 +22,15 @@ proxy:
   environment:
     - ENVIRONMENT=development
 
+iamhere:
+  build: ./iamhere
+  ports:
+    - "8001:8001"
+  volumes:
+    - ${WOF_DATA}:/wof/wof-data:ro
+  environment:
+    - WOF_DATA=/wof/wof-data
+
 spelunker:
   build: ./spelunker
   volumes:
