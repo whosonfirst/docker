@@ -5,6 +5,10 @@ ENV REVISION     ${REVISION:-master}
 ENV WOF_DATA     ${WOF_DATA:-/wof/data}
 ENV IAMHERE_REPO https://github.com/whosonfirst/whosonfirst-www-iamhere.git
 
+EXPOSE 8001
+EXPOSE 8080
+EXPOSE 9999
+
 RUN mkdir /wof
 WORKDIR /wof
 
