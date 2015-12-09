@@ -16,6 +16,7 @@ elasticsearch:
 proxy:
   build: ./proxy
   links:
+    - iamhere
     - spelunker
   ports:
     - "80:80"
