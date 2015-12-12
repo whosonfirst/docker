@@ -9,6 +9,10 @@ ENV IAMHERE_PIP_PORT  ${IAMHERE_PIP_PORT:-8080}
 ENV IAMHERE_WWW_PORT  ${IAMHERE_WWW_PORT:-8001}
 ENV IAMHERE_DATA_PORT ${IAMHERE_DATA_PORT:-9999}
 
+ENV IAMHERE_PIP_HOST  ${IAMHERE_PIP_HOST:-0.0.0.0}
+ENV IAMHERE_WWW_HOST  ${IAMHERE_WWW_HOST:-0.0.0.0}
+ENV IAMHERE_DATA_HOST ${IAMHERE_DATA_HOST:-0.0.0.0}
+
 EXPOSE ${IAMHERE_PIP_PORT}
 EXPOSE ${IAMHERE_WWW_PORT}
 EXPOSE ${IAMHERE_DATA_PORT}
@@ -19,9 +23,9 @@ WORKDIR /wof
 RUN apt-get update && apt-get install git -y
 RUN git clone ${IAMHERE_REPO} iamhere && cd iamhere && git checkout ${REVISION}
 CMD cd iamhere && ./bin/start.py \
-  --pip-host 0.0.0.0 \
-  --www-host 0.0.0.0 \
-  --data-host 0.0.0.0 \
+  --pip-host ${IAMHERE_PIP_HOST} \
+  --www-host ${IAMHERE_WWW_HOST} \
+  --data-host ${IAMHERE_DATA_HOST} \
   --pip-port ${IAMHERE_PIP_PORT} \
   --www-port ${IAMHERE_WWW_PORT} \
   --data-port ${IAMHERE_DATA_PORT} \
